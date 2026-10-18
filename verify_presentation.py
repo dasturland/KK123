@@ -8,18 +8,19 @@ Tekshiradi:
   (c) Faqat "Times New Roman" shrifti ishlatilgan;
   (d) Hech bir shrift 12 pt dan kichik emas;
   (e) Titul slaydda universitet / fan / taqdimotchi ma'lumotlari aynan mavjud;
-  (f) Har bir slaydda Unsplash URL manzili bor.
+  (f) Har bir slaydda Unsplash URL manzili bor;
+  (g) Har bir slaydda JOYLANGAN PNG rasm bor (<p:pic> + media + rels),
+      PNG imzolari yaroqli va [Content_Types].xml png ni qamrab olgan.
 """
 import re
 import sys
 import zipfile
 import xml.etree.ElementTree as ET
 
-A = "http://schemas.openxmlformats.org/drawingml/2006/main"
+PNG_SIG = b"\x89PNG\r\n\x1a\n"
 
 
 def main(path):
-    ok = True
     with zipfile.ZipFile(path) as z:
         bad = z.testzip()
         assert bad is None, f"Buzuq ZIP qismi: {bad}"
@@ -44,20 +45,18 @@ def main(path):
         all_sizes = []
         non_tnr = set()
         unsplash_per_slide = {}
+        pic_per_slide = {}
         slide_texts = {}
         for nm in sorted(slide_files, key=lambda s: int(re.search(r"\d+", s.split("/")[-1]).group())):
             xml = z.read(nm).decode("utf-8")
             idx = int(re.search(r"slide(\d+)\.xml", nm).group(1))
-            # typeface'lar
             for tf in re.findall(r'typeface="([^"]+)"', xml):
                 if tf and tf != "Times New Roman":
                     non_tnr.add(tf)
-            # sz atributlari (yuzdan birlarda)
             for sz in re.findall(r'sz="(\d+)"', xml):
                 all_sizes.append(int(sz))
-            # Unsplash URL
             unsplash_per_slide[idx] = "unsplash.com" in xml
-            # matn
+            pic_per_slide[idx] = "<p:pic>" in xml and 'r:embed="rId2"' in xml
             texts = re.findall(r"<a:t>(.*?)</a:t>", xml, re.S)
             slide_texts[idx] = " ".join(texts)
 
@@ -89,8 +88,28 @@ def main(path):
             assert lbl in plan, f"Reja slaydida yoʻq: {lbl}"
         print("(b2) 4 qismli tuzilma (1,2,3-qism + Xulosa): reja slaydida mavjud")
 
+        # (g) joylangan rasmlar
+        no_pic = [i for i, v in pic_per_slide.items() if not v]
+        assert not no_pic, f"<p:pic> rasm yoʻq slaydlar: {no_pic}"
+        media = [n for n in names if re.match(r"ppt/media/image\d+\.png$", n)]
+        print(f"(g) har slaydda <p:pic> bor; media fayllari: {len(media)} ta")
+        assert len(media) == 10, f"Media PNG soni 10 emas: {len(media)}"
+        for m in media:
+            data = z.read(m)
+            assert data.startswith(PNG_SIG), f"PNG imzosi buzuk: {m}"
+            # IHDR dan o'lchamni o'qiymiz
+            w, h = int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+            assert w > 100 and h > 50, f"PNG o'lchami kichik: {m} {w}x{h}"
+        ct = z.read("[Content_Types].xml").decode("utf-8")
+        assert 'Extension="png"' in ct, "[Content_Types].xml da png yoʻq"
+        # har bir slayd rels faylida rasm munosabati bor
+        for i in range(1, 11):
+            rels = z.read(f"ppt/slides/_rels/slide{i}.xml.rels").decode("utf-8")
+            assert "relationships/image" in rels, f"slide{i} rels da image yoʻq"
+        print("(g) barcha PNG lar yaroqli, rels va content-types to'g'ri")
+
     print("\nBARCHA TEKSHIRUVLAR MUVAFFAQIYATLI OʻTDI ✓")
-    return ok
+    return True
 
 
 if __name__ == "__main__":
