@@ -1,0 +1,8 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Vaqtinchalik tekshiruv fayllari / temporary verification artifacts
+_tampered.pptx
+_orig.pptx
