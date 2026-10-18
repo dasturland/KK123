@@ -18,7 +18,7 @@ avtomatik yaratiladi.
 | Fayl | Vazifasi |
 | --- | --- |
 | `generate_presentation.py` | Taqdimotni (`.pptx`) yaratuvchi dastur. |
-| `verify_presentation.py` | Yaratilgan `.pptx` ni qat'iy talablarga tekshiruvchi dastur. |
+| `verify_presentation.py` | Yaratilgan `.pptx` ni qatʼiy talablarga tekshiruvchi dastur. |
 | `Kompyuterlar_qizishi_va_sovishi.pptx` | Tayyor taqdimot (dastur natijasi). |
 | `README.md` | Ushbu hujjat. |
 
@@ -26,14 +26,14 @@ avtomatik yaratiladi.
 
 Ushbu loyiha **faqat Python standart kutubxonasidan** foydalanadi
 (`zipfile`, `xml`, `re`). `python-pptx` yoki `lxml` kabi tashqi paketlar
-**talab qilinmaydi va o'rnatilmaydi**.
+**talab qilinmaydi va oʻrnatilmaydi**.
 
 **Sababi:** ushbu muhitda tashqi paket registri (PyPI) bloklangan
 (`pip install python-pptx` -> `403 Forbidden`). Shu bois `.pptx` fayl
-OPC/OpenXML ZIP paketini qo'lda yig'ish orqali yaratiladi: `[Content_Types].xml`,
+OPC/OpenXML ZIP paketini qoʻlda yigʻish orqali yaratiladi: `[Content_Types].xml`,
 `_rels/.rels`, `ppt/presentation.xml`, `ppt/presProps.xml`, `ppt/theme/theme1.xml`,
 `ppt/slideMasters/`, `ppt/slideLayouts/` va `ppt/slides/slideN.xml` qismlari
-to'g'ridan-to'g'ri XML sifatida yoziladi.
+toʻgʻridan-toʻgʻri XML sifatida yoziladi.
 
 > **English:** Uses only the Python standard library because the sandbox blocks
 > the package registry (`pip install` returns HTTP 403). The `.pptx` is built by
@@ -41,73 +41,73 @@ to'g'ridan-to'g'ri XML sifatida yoziladi.
 
 ## Ishga tushirish / How to run
 
-Python 3.11+ yetarli, qo'shimcha o'rnatish shart emas.
+Python 3.11+ yetarli, qoʻshimcha oʻrnatish shart emas.
 
 ```bash
-# 1) Taqdimotni yaratish (Kompyuterlar_qizishi_va_sovishi.pptx hosil bo'ladi)
+# 1) Taqdimotni yaratish (Kompyuterlar_qizishi_va_sovishi.pptx hosil boʻladi)
 python3 generate_presentation.py
 
 # 2) Yaratilgan faylni tekshirish (PASS chop etiladi, chiqish kodi 0)
 python3 verify_presentation.py
 ```
 
-`verify_presentation.py` quyidagi qat'iy shartlarni tekshiradi va biror shart
-buzilsa **nol bo'lmagan** kod bilan yakunlanadi (FAIL):
+`verify_presentation.py` quyidagi qatʼiy shartlarni tekshiradi va biror shart
+buzilsa **nol boʻlmagan** kod bilan yakunlanadi (FAIL):
 
 - aniq **10 ta** slayd (`ppt/slides/slide1.xml` ... `slide10.xml`);
 - har bir matn runi (`<a:r>`) **Times New Roman** shriftidan foydalanadi;
-- barcha shrift o'lchamlari (`sz`) **>= 1200** (12pt);
+- barcha shrift oʻlchamlari (`sz`) **>= 1200** (12pt);
 - 1-slaydda `Toshboʻriyeva Marjona`, `242_26` va
   `Jizzax davlat pedagogika universiteti` matnlari mavjud;
 - har bir slaydda **Unsplash** havolasi bor.
 
-Muvaffaqiyatli bo'lsa, dastur slaydlar soni hamda eng kichik/eng katta shrift
-o'lchamlarini ko'rsatuvchi `PASS` xulosasini chop etadi.
+Muvaffaqiyatli boʻlsa, dastur slaydlar soni hamda eng kichik/eng katta shrift
+oʻlchamlarini koʻrsatuvchi `PASS` xulosasini chop etadi.
 
 ## Slaydlar tuzilmasi / Slide structure (10 slayd)
 
 | Slayd | Qism | Mazmuni |
 | --- | --- | --- |
-| 1 | Titul varag'i | Mavzu va muallif ma'lumotlari. |
-| 2 | Reja | 3 ta asosiy qism va xulosa ro'yxati. |
+| 1 | Titul varagʻi | Mavzu va muallif maʼlumotlari. |
+| 2 | Reja | 3 ta asosiy qism va xulosa roʻyxati. |
 | 3 | 1-qism | Protsessor nima uchun qiziydi? Tranzistorlar ishlashi. |
 | 4 | 1-qism | Joul-Lents qonuni (Q = I² · R · t) va energiyaning issiqlikka aylanishi. |
 | 5 | 2-qism | Issiqlikning oqibatlari: kompyuter qiziganda nima yuz beradi. |
-| 6 | 2-qism | Trottling (Throttling) jarayoni va uning ishlash tezligiga ta'siri. |
+| 6 | 2-qism | Trottling (Throttling) jarayoni va uning ishlash tezligiga taʼsiri. |
 | 7 | 3-qism | Sovutish fizikasi: radiatorlar va termopastaning vazifasi. |
-| 8 | 3-qism | Kulerlar (ventilyatorlar): havoni so'rib olish va haydash (konveksiya). |
+| 8 | 3-qism | Kulerlar (ventilyatorlar): havoni soʻrib olish va haydash (konveksiya). |
 | 9 | 4-qism (Xulosa) | Issiqlik va sovutish balansining barqaror ishlashdagi ahamiyati. |
-| 10 | Yakunlovchi | E'tiboringiz uchun rahmat; savollar uchun ochiq maydon. |
+| 10 | Yakunlovchi | Eʼtiboringiz uchun rahmat; savollar uchun ochiq maydon. |
 
-Asosiy qism **4 qismga** bo'lingan: 3 ta asosiy reja (1-3-qismlar) + 1 ta
+Asosiy qism **4 qismga** boʻlingan: 3 ta asosiy reja (1-3-qismlar) + 1 ta
 xulosa (4-qism).
 
 ## Shrift qoidalari / Font rules
 
 - Butun taqdimotda **faqat Times New Roman** shriftidan foydalaniladi (har bir
   run `<a:latin>` va `<a:cs>` orqali aniq belgilangan).
-- Eng kichik shrift o'lchami **12pt** (OpenXML da `sz="1200"`); hech bir matn
+- Eng kichik shrift oʻlchami **12pt** (OpenXML da `sz="1200"`); hech bir matn
   bundan kichik emas.
-- O'lchamlar **ierarxik** tanlangan (OpenXML yuzdan bir punkt birligida):
+- Oʻlchamlar **ierarxik** tanlangan (OpenXML yuzdan bir punkt birligida):
 
   | Element | `sz` | Punkt |
   | --- | --- | --- |
   | 1-slayd asosiy sarlavhasi | 4400 | 44pt |
   | Slayd sarlavhalari | 3600 | 36pt |
-  | Bo'lim / reja sarlavhalari | 2800 | 28pt |
+  | Boʻlim / reja sarlavhalari | 2800 | 28pt |
   | Asosiy nuqtalar | 2200 | 22pt |
   | Tafsilot (tana) matni | 1600 | 16pt |
   | Unsplash havola qatori | 1300 | 13pt |
 
 ## Rasmlar / Images (Unsplash)
 
-Har bir slaydda mavzuga mos **Unsplash** rasm manzili (URL) ko'rinadigan matn
+Har bir slaydda mavzuga mos **Unsplash** rasm manzili (URL) koʻrinadigan matn
 qatori sifatida beriladi (`Rasm (Unsplash): https://unsplash.com/...`).
 
 Rasmlar faylga **joylashtirilmaydi**, chunki ushbu muhitda tashqi tarmoqqa
-chiqish bloklangan (`images.unsplash.com` -> `403`) va rasmlarni yuklab bo'lmaydi.
+chiqish bloklangan (`images.unsplash.com` -> `403`) va rasmlarni yuklab boʻlmaydi.
 Shu sababli rasmlar havola (URL) orqali keltiriladi. Internet mavjud muhitda
-ushbu URL manzillaridan rasmlarni yuklab olib, slaydlarga qo'shish mumkin.
+ushbu URL manzillaridan rasmlarni yuklab olib, slaydlarga qoʻshish mumkin.
 
 > **English:** Each slide references a topic-matched Unsplash image by URL
 > instead of embedding it, because the sandbox has no external network access

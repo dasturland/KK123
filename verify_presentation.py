@@ -16,7 +16,8 @@ Tekshiriladigan shartlar:
   * Barcha sz="NNNN" qiymatlari >= 1200 (12pt).
   * 1-slaydda: 'Toshbo\u02bbriyeva Marjona', '242_26',
     'Jizzax davlat pedagogika universiteti' mavjud.
-  * Har bir slaydda 'unsplash' (katta-kichik harfga bog'liq emas) mavjud.
+  * Har bir slaydda 'unsplash' (katta-kichik harfga bog'liq emas) mavjud
+    va barcha 10 ta Unsplash rasm identifikatori (ID) noyob.
 
 This verifier is written with the Python standard library only (no python-pptx /
 lxml, since the package registry is blocked). It genuinely fails (non-zero exit)
@@ -39,6 +40,11 @@ SLIDE_RE = re.compile(r"^ppt/slides/slide(\d+)\.xml$")
 # Bitta <a:r> ... </a:r> run bloki (eng kichik mos kelish).
 RUN_RE = re.compile(r"<a:r>.*?</a:r>", re.DOTALL)
 SZ_RE = re.compile(r'sz="(\d+)"')
+# Unsplash havolasidagi rasm identifikatori: .../photos/<slug>-<ID>
+# Unsplash ID doimo yo'l qismining oxirgi 11 ta belgisidir
+# ([A-Za-z0-9_-], URL oxirida, matn tirnoq/bo'sh joy bilan tugaydi).
+UNSPLASH_ID_RE = re.compile(
+    r"unsplash\.com/photos/[A-Za-z0-9_-]+?([A-Za-z0-9_-]{11})(?=[^A-Za-z0-9_-]|$)")
 
 REQUIRED_SLIDE1 = [
     "Toshbo\u02bbriyeva Marjona",  # U+02BB okina
@@ -120,9 +126,23 @@ def check_slide1_strings(slides):
 
 
 def check_unsplash(slides):
+    """Har bir slaydda Unsplash havolasi bor va 10 ta rasm ID si noyob."""
+    ids = {}
     for n in sorted(slides):
-        if "unsplash" not in slides[n].lower():
+        xml = slides[n]
+        if "unsplash" not in xml.lower():
             fail("slide%d.xml da Unsplash havolasi topilmadi" % n)
+        found = UNSPLASH_ID_RE.findall(xml)
+        if not found:
+            fail("slide%d.xml dagi Unsplash havolasida rasm ID si "
+                 "topilmadi" % n)
+        for pid in found:
+            if pid in ids:
+                fail("Unsplash rasm ID si takrorlanmoqda: %r (slide%d va "
+                     "slide%d). Har bir ID bitta rasmga mos kelishi kerak."
+                     % (pid, ids[pid], n))
+            ids[pid] = n
+    return ids
 
 
 def main():
@@ -141,7 +161,7 @@ def main():
             check_slide_count(slides)
             min_sz, max_sz, total_runs = check_fonts_and_sizes(slides)
             check_slide1_strings(slides)
-            check_unsplash(slides)
+            unsplash_ids = check_unsplash(slides)
     except VerificationError as exc:
         print("TEKSHIRUV MUVAFFAQIYATSIZ (FAIL): %s" % exc, file=sys.stderr)
         return 1
@@ -153,9 +173,9 @@ def main():
     print("PASS: %d ta slayd, %d ta run - barchasi Times New Roman; "
           "shrift o'lchami min=%d (%.0fpt), max=%d (%.0fpt), minimum >= %d "
           "(12pt); 1-slayd muallif/universitet matnlari mavjud; har bir "
-          "slaydda Unsplash havolasi bor."
+          "slaydda Unsplash havolasi bor va %d ta rasm ID si noyob."
           % (len(slides), total_runs, min_sz, min_sz / 100.0,
-             max_sz, max_sz / 100.0, MIN_SZ))
+             max_sz, max_sz / 100.0, MIN_SZ, len(unsplash_ids)))
     return 0
 
 

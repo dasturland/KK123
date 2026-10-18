@@ -180,11 +180,11 @@ def build_slides():
         para_xml("2-qism. Issiqlikning oqibatlari.", SZ_KEY, bold=True,
                  color=ACCENT, bullet=True),
         para_xml("Kompyuter qiziganda nima yuz beradi: trottling (throttling) "
-                 "va uning ishlash tezligiga ta'siri.", SZ_BODY, bullet=True),
+                 "va uning ishlash tezligiga taʼsiri.", SZ_BODY, bullet=True),
         para_xml("3-qism. Sovutish fizikasi va mexanizmlari.", SZ_KEY, bold=True,
                  color=ACCENT, bullet=True),
         para_xml("Radiatorlar, termopastaning vazifasi, kulerlar yordamida "
-                 "havoni so'rib olish va haydash.", SZ_BODY, bullet=True),
+                 "havoni soʻrib olish va haydash.", SZ_BODY, bullet=True),
         para_xml("4-qism. Xulosa.", SZ_KEY, bold=True, color=ACCENT, bullet=True),
         para_xml("Issiqlik va sovutish balansining barqaror ishlashdagi "
                  "ahamiyati.", SZ_BODY, bullet=True),
@@ -200,18 +200,18 @@ def build_slides():
         para_xml("Tranzistorlar - protsessorning asosiy elementlari",
                  SZ_HEADING, bold=True, color=ACCENT),
         para_xml("Zamonaviy protsessor milliardlab mayda tranzistorlardan "
-                 "iborat bo'lib, ular elektron kalitlar vazifasini bajaradi.",
+                 "iborat boʻlib, ular elektron kalitlar vazifasini bajaradi.",
                  SZ_BODY, bullet=True),
         para_xml("Har bir tranzistor soniyada millionlab marta ochilib-yopiladi "
                  "(0 va 1 holatlar), bu esa elektr tokining uzluksiz oqishini "
                  "talab qiladi.", SZ_BODY, bullet=True),
-        para_xml("Tranzistorlarning ochilib-yopilishida yarimo'tkazgich "
+        para_xml("Tranzistorlarning ochilib-yopilishida yarimoʻtkazgich "
                  "materialning qarshiligi tufayli elektr energiyasining bir "
                  "qismi issiqlikka aylanadi.", SZ_BODY, bullet=True),
-        para_xml("Tranzistorlar soni va chastota (GHz) qancha yuqori bo'lsa, "
-                 "ajralib chiqadigan issiqlik ham shuncha ko'p bo'ladi.",
+        para_xml("Tranzistorlar soni va chastota (GHz) qancha yuqori boʻlsa, "
+                 "ajralib chiqadigan issiqlik ham shuncha koʻp boʻladi.",
                  SZ_BODY, bullet=True),
-        para_xml(unsplash_line("https://unsplash.com/photos/macro-photography-of-black-circuit-board-FO7JIlwjOtU"),
+        para_xml(unsplash_line("https://unsplash.com/photos/macro-photography-of-black-circuit-board-aQYgUYwnCsM"),
                  SZ_SMALL, color=ACCENT),
     ]
     slides.append(slide_xml(title, body))
@@ -225,16 +225,16 @@ def build_slides():
         para_xml("Joul-Lents qonuni: Q = I\u00b2 \u00b7 R \u00b7 t", SZ_KEY,
                  bold=True, color=CYAN, bullet=True),
         para_xml("Bu yerda Q - ajralib chiqqan issiqlik miqdori, I - tok "
-                 "kuchi, R - o'tkazgich qarshiligi, t - vaqt.", SZ_BODY,
+                 "kuchi, R - oʻtkazgich qarshiligi, t - vaqt.", SZ_BODY,
                  bullet=True),
-        para_xml("O'tkazgichdan tok o'tganda zaryadlangan zarralar atom "
-                 "panjarasi bilan to'qnashadi va energiyasining bir qismini "
-                 "issiqlik ko'rinishida yo'qotadi.", SZ_BODY, bullet=True),
-        para_xml("Shu sababli protsessor qanchalik ko'p hisob-kitob bajarsa, "
+        para_xml("Oʻtkazgichdan tok oʻtganda zaryadlangan zarralar atom "
+                 "panjarasi bilan toʻqnashadi va energiyasining bir qismini "
+                 "issiqlik koʻrinishida yoʻqotadi.", SZ_BODY, bullet=True),
+        para_xml("Shu sababli protsessor qanchalik koʻp hisob-kitob bajarsa, "
                  "tok kuchi (I) ortadi va ajralib chiqadigan issiqlik "
-                 "kvadratik ravishda ko'payadi.", SZ_BODY, bullet=True),
+                 "kvadratik ravishda koʻpayadi.", SZ_BODY, bullet=True),
         para_xml("Ajralgan issiqlik vaqtida chiqarilmasa, kristall harorati "
-                 "xavfli darajaga ko'tariladi.", SZ_BODY, bullet=True),
+                 "xavfli darajaga koʻtariladi.", SZ_BODY, bullet=True),
         para_xml(unsplash_line("https://unsplash.com/photos/a-close-up-of-a-blue-and-black-electronic-device-ZV_64LdGoao"),
                  SZ_SMALL, color=ACCENT),
     ]
@@ -251,10 +251,10 @@ def build_slides():
         para_xml("Ortiqcha issiqlik tranzistorlar va boshqa elektron "
                  "komponentlarning tez eskirishiga olib keladi.", SZ_BODY,
                  bullet=True),
-        para_xml("Haddan tashqari qizish natijasida kompyuter o'z-o'zidan "
-                 "o'chib qolishi yoki qotib qolishi mumkin.", SZ_BODY,
+        para_xml("Haddan tashqari qizish natijasida kompyuter oʻz-oʻzidan "
+                 "oʻchib qolishi yoki qotib qolishi mumkin.", SZ_BODY,
                  bullet=True),
-        para_xml("Shuning uchun protsessorda harorat datchiklari bo'lib, "
+        para_xml("Shuning uchun protsessorda harorat datchiklari boʻlib, "
                  "ular haroratni doimiy nazorat qilib turadi.", SZ_BODY,
                  bullet=True),
         para_xml(unsplash_line("https://unsplash.com/photos/red-and-black-abstract-illustration-mcSDtbWXUZU"),
@@ -266,18 +266,18 @@ def build_slides():
     title = [para_xml("2-qism. Trottling (Throttling) jarayoni",
                       SZ_SLIDE_TITLE, bold=True, color=DARK)]
     body = [
-        para_xml("Himoya mexanizmi va uning tezlikka ta'siri",
+        para_xml("Himoya mexanizmi va uning tezlikka taʼsiri",
                  SZ_HEADING, bold=True, color=ACCENT),
         para_xml("Trottling - harorat xavfli chegaraga yetganda protsessor "
-                 "o'z ish chastotasini (tezligini) atayin pasaytirishi.",
+                 "oʻz ish chastotasini (tezligini) atayin pasaytirishi.",
                  SZ_BODY, bullet=True),
         para_xml("Chastotaning pasayishi bilan tok kuchi kamayadi, natijada "
-                 "Joul-Lents qonuniga ko'ra ajralib chiqadigan issiqlik ham "
+                 "Joul-Lents qonuniga koʻra ajralib chiqadigan issiqlik ham "
                  "kamayadi.", SZ_BODY, bullet=True),
         para_xml("Bu mexanizm protsessorni kuyib ketishdan saqlaydi, biroq "
                  "kompyuterning umumiy ishlash tezligi sezilarli pasayadi.",
                  SZ_BODY, bullet=True),
-        para_xml("Natijada o'yinlar va og'ir dasturlarda \"sekinlashish\" "
+        para_xml("Natijada oʻyinlar va ogʻir dasturlarda \"sekinlashish\" "
                  "(lag) seziladi. Yaxshi sovutish trottlingni oldini oladi.",
                  SZ_BODY, bullet=True),
         para_xml(unsplash_line("https://unsplash.com/photos/a-computer-processor-with-the-letters-amd-on-it-Dawk-Nx-R3o"),
@@ -291,17 +291,17 @@ def build_slides():
     body = [
         para_xml("Issiqlikni protsessordan uzatish",
                  SZ_HEADING, bold=True, color=ACCENT),
-        para_xml("Radiator (issiqlik tarqatgich) - ko'p sonli metall "
-                 "qanotlardan iborat bo'lib, issiqlik almashinuv yuzasini "
+        para_xml("Radiator (issiqlik tarqatgich) - koʻp sonli metall "
+                 "qanotlardan iborat boʻlib, issiqlik almashinuv yuzasini "
                  "kengaytiradi.", SZ_BODY, bullet=True),
-        para_xml("Mis va alyuminiy yuqori issiqlik o'tkazuvchanligi tufayli "
+        para_xml("Mis va alyuminiy yuqori issiqlik oʻtkazuvchanligi tufayli "
                  "radiatorlar uchun asosiy material hisoblanadi.", SZ_BODY,
                  bullet=True),
         para_xml("Termopasta protsessor va radiator orasidagi mikroskopik "
-                 "havo bo'shliqlarini to'ldiradi; havo issiqlikni yomon "
-                 "o'tkazadi, pasta esa aloqani yaxshilaydi.", SZ_BODY,
+                 "havo boʻshliqlarini toʻldiradi; havo issiqlikni yomon "
+                 "oʻtkazadi, pasta esa aloqani yaxshilaydi.", SZ_BODY,
                  bullet=True),
-        para_xml("Shunday qilib issiqlik issiqlik o'tkazuvchanlik orqali "
+        para_xml("Shunday qilib issiqlik issiqlik oʻtkazuvchanlik orqali "
                  "kristalldan radiatorga samarali uzatiladi.", SZ_BODY,
                  bullet=True),
         para_xml(unsplash_line("https://unsplash.com/photos/a-cpu-cooler-with-copper-heat-pipes-and-fins-9SoCnyQmkzI"),
@@ -313,15 +313,15 @@ def build_slides():
     title = [para_xml("3-qism. Kulerlar (ventilyatorlar) va havo oqimi",
                       SZ_SLIDE_TITLE, bold=True, color=DARK)]
     body = [
-        para_xml("Havoni so'rib olish va haydash jarayoni",
+        para_xml("Havoni soʻrib olish va haydash jarayoni",
                  SZ_HEADING, bold=True, color=ACCENT),
         para_xml("Kuler (ventilyator) radiator qanotlari orqali havo oqimini "
                  "hosil qiladi va qizigan havoni korpusdan tashqariga haydaydi.",
                  SZ_BODY, bullet=True),
         para_xml("Bu jarayon konveksiya deb ataladi: harakatlanayotgan havo "
-                 "issiqlikni o'zi bilan olib ketadi.", SZ_BODY, bullet=True),
+                 "issiqlikni oʻzi bilan olib ketadi.", SZ_BODY, bullet=True),
         para_xml("Korpusda havo balansi muhim: oldingi ventilyatorlar salqin "
-                 "havoni so'rib oladi, orqadagilar esa issiq havoni haydaydi.",
+                 "havoni soʻrib oladi, orqadagilar esa issiq havoni haydaydi.",
                  SZ_BODY, bullet=True),
         para_xml("Suvli (suyuqlikli) sovutish tizimlarida issiqlik suyuqlik "
                  "orqali radiatorga olib boriladi va u yerda ventilyatorlar "
@@ -339,14 +339,14 @@ def build_slides():
         para_xml("Protsessordagi issiqlik elektr energiyasining issiqlikka "
                  "aylanishi (Joul-Lents qonuni) tufayli muqarrar ravishda "
                  "ajralib chiqadi.", SZ_BODY, bullet=True),
-        para_xml("Ajralgan issiqlik va chiqarilgan issiqlik o'rtasidagi "
-                 "muvozanat tizim barqaror va samarali ishlashini ta'minlaydi.",
+        para_xml("Ajralgan issiqlik va chiqarilgan issiqlik oʻrtasidagi "
+                 "muvozanat tizim barqaror va samarali ishlashini taʼminlaydi.",
                  SZ_BODY, bullet=True),
-        para_xml("Sifatli radiator, termopasta va to'g'ri havo oqimi "
+        para_xml("Sifatli radiator, termopasta va toʻgʻri havo oqimi "
                  "trottlingni oldini oladi va protsessor umrini uzaytiradi.",
                  SZ_BODY, bullet=True),
-        para_xml("Demak, kompyuterning yuqori unumdorligi to'g'ri tashkil "
-                 "etilgan sovutish tizimiga bevosita bog'liqdir.", SZ_BODY,
+        para_xml("Demak, kompyuterning yuqori unumdorligi toʻgʻri tashkil "
+                 "etilgan sovutish tizimiga bevosita bogʻliqdir.", SZ_BODY,
                  bullet=True),
         para_xml(unsplash_line("https://unsplash.com/photos/a-computer-case-with-rgb-cooling-fans-mAcDFkmc5fU"),
                  SZ_SMALL, color=ACCENT),
@@ -354,7 +354,7 @@ def build_slides():
     slides.append(slide_xml(title, body))
 
     # --- 10-slayd: Yakunlovchi ---
-    title = [para_xml("E'tiboringiz uchun rahmat!", SZ_SLIDE_TITLE, bold=True,
+    title = [para_xml("Eʼtiboringiz uchun rahmat!", SZ_SLIDE_TITLE, bold=True,
                       color=DARK, align="ctr")]
     body = [
         para_xml("Savollaringiz uchun maydon ochiq.", SZ_HEADING,
@@ -365,7 +365,7 @@ def build_slides():
         para_xml("Jizzax davlat pedagogika universiteti - Axborot tizimlari fani",
                  SZ_BODY, align="ctr"),
         para_xml("", SZ_BODY),
-        para_xml(unsplash_line("https://unsplash.com/photos/a-glowing-computer-cpu-on-a-dark-background-mcSDtbWXUZU"),
+        para_xml(unsplash_line("https://unsplash.com/photos/a-glowing-computer-cpu-on-a-dark-background-pfR18JNEl8s"),
                  SZ_SMALL, color=ACCENT, align="ctr"),
     ]
     slides.append(slide_xml(title, body, title_anchor="ctr"))
